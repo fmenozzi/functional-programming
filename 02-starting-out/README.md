@@ -96,5 +96,20 @@
 * **List Comprehensions**
     * Allows lists to be constructed from more complex conditions
     * Similar to list comprehensions in Python
+    * Allows optional conditionals to *filter* results
     * Examples:
         * `[2*x | x <- [1..10]]` is `[2,4,6,8,10,12,14,16,18,20]`
+        * `[2*x | x <- [1..10], 2*x >= 12]` is `[12,14,16,18,20]`
+        * `[(x,y) | x <- [1,2], y <- [3,4]]` is `[(1,1),(1,2),(2,1),(2,2)]`
+* **Tuples**
+    * Similar to lists, except that tuples are *non-homogeneous* and their size forms part of their type
+    * Denoted with parens instead of brackets
+        * e.g. `t = (1, "two", 3.0)`
+    * Some functions for operating with tuples:
+        * **`fst`**: Takes a 2-tuple and returns the first element
+            * `fst (8,11)` is `8`
+        * **`snd`**: Takes a 2-tuple and returns the second element
+            * `snd (8,11)` is `11`
+        * **`zip`**: Takes two lists and "zips" them together into a single list of 2-tuples
+            * `zip [1,2,3] ['a','b','c']` is `[(1,'a'),(2,'b'),(3,'c')]`
+            * `zip [1,2,3] [1..]` is `[(1,1),(2,2),(3,3)]`

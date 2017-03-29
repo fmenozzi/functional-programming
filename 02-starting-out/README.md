@@ -75,8 +75,8 @@
         * **`sum`**: Returns sum of elements
         * **`product`**: Returns product of elements
         * **`elem`**: Determines whether element is in list
-            * ``3 `elem` [1,2,3,4,5]`` is `True`
-**Ranges**
+            * ``3 `elem` [1,2,3,4,5]`` is `True`    
+* **Ranges**
     * Allow construction of lists of arithmetic sequences
         * This means strings too
     * Default step is `1`, but a different step can also be specified
@@ -93,7 +93,7 @@
             * `take 6 (repeat 5)` is `[5,5,5,5,5,5]`
         * **`replicate`**: Takes an element and a size and produces a finite list out of it
             * `replicate 3 10` is `[10,10,10]`
-**List Comprehensions**
+* **List Comprehensions**
     * Allows lists to be constructed from more complex conditions
     * Similar to list comprehensions in Python
     * Examples:

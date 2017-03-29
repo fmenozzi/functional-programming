@@ -34,3 +34,67 @@
     * Unlike most imperitive languages, if-statements in Haskell are really *expressions* and thus return a value
         * This therefore means that the `else` clause is mandatory
             * e.g. `lowPassFilter x thresh = if x > thresh then thresh else x`
+* **Lists**
+    * *Homogeneous* data structures (i.e. stores several elements of the same type)
+    * Strings are just lists of characters
+    * Defined using brackets
+        * `l = [1,2,3,4,5]` or `let l = [1,2,3,4,5]` (in GHCi)
+    * Lists are concatenated with the `++` operator
+        * e.g. `[1,2,3,4,5] ++ [6,7,8,9,10]` is `[1,2,3,4,5,6,7,8,9,10]`
+        * Concatenation is a linear-time operation, however, so avoid it when one or both of the lists is long
+    * For instant concatenation of a *single* iten to the *front* of a list, use the *cons* operator `:`
+        * e.g. `1:[2,3,4]` is `[1,2,3,4]`
+    * Lists use zero-based indexing. Use the `!!` operator to index into them.
+        * e.g. `[1,2,3] !! 0` is `1`
+    * Relational operators `<`, `<=`, `>`, `>=` can be used to compare lists lexicographically
+        * `[3,2,1] > [2,1,0]`
+        * `[3,2,1] > [2,10,100]`
+        * `[3,4,2] > [3,4]`
+        * `[3,4,2] > [2,4]`
+        * `[3,4,2] == [3,4,2]`
+    * Some useful list-related functions:
+        * **`head`**: Returns first element of non-empty list
+            * `head [5,4,3,2,1]` is `5`
+        * **`tail`**: Removes head of non-empty list and returns result
+            * `tail [5,4,3,2,1]` is `[4,3,2,1]`
+        * **`last`**: Returns last element of non-empty list
+            * `last [5,4,3,2,1]` is `1`
+        * **`init`**: Removes last element of non-empty list and returns result
+            * `init [5,4,3,2,1]` is `[5,4,3,2]`
+    * Other useful list functions:
+        * **`length`**: Returns number of elements in list
+        * **`null`**: Returns `True` if list is empty, `False` otherwise
+        * **`reverse`**: Returns the input list reversed
+        * **`take`**: Extract given number of elements from list
+            * `take 3 [1,2,3,4,5]` is `[1,2,3]`
+            * `take 5 [1,2,3,4,5]` is `[1,2,3,4,5]`
+            * `take 10 [1,2,3,4,5]` is `[1,2,3,4,5]`
+        * **`drop`**: Works similarly to `take`, except that it removes from the list
+        * **`maximum`**: Returns largest element
+        * **`minimum`**: Returns smallest element
+        * **`sum`**: Returns sum of elements
+        * **`product`**: Returns product of elements
+        * **`elem`**: Determines whether element is in list
+            * ``3 `elem` [1,2,3,4,5]`` is `True`
+**Ranges**
+    * Allow construction of lists of arithmetic sequences
+        * This means strings too
+    * Default step is `1`, but a different step can also be specified
+    * Defined using `..` operator
+        * `[1..10]` is `[1,2,3,4,5,6,7,8,9,10]`
+        * `[1,3..9]` is `[1,3,5,7,9]`
+        * `['a'..'g']` is `"abcdefg"`
+    * Descending lists *must* have a step
+        * `[5,4..1]` is `[5,4,3,2,1]`
+    * Some functions that produce infinite lists:
+        * **`cycle`**: Cycles a list infinitely
+            * `take 6 (cycle [1,2,3])` is `[1,2,3,1,2,3]`
+        * **`repeat`**: Takes an element and produces an infinite list out of it
+            * `take 6 (repeat 5)` is `[5,5,5,5,5,5]`
+        * **`replicate`**: Takes an element and a size and produces a finite list out of it
+            * `replicate 3 10` is `[10,10,10]`
+**List Comprehensions**
+    * Allows lists to be constructed from more complex conditions
+    * Similar to list comprehensions in Python
+    * Examples:
+        * `[2*x | x <- [1..10]]` is `[2,4,6,8,10,12,14,16,18,20]`

@@ -1,4 +1,4 @@
-# Chapter 2 - Summary
+# Chapter 3 - Summary
 
 * **Haskell Type System**
     * Haskell is a *statically-typed* language, which means that every variable and function has an associated type

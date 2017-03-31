@@ -17,7 +17,7 @@
 * **Function Type Declarations**
     * Unless they're very short, functions should typically be declared with *type declarations*:
 
-      ```
+      ```haskell
       removeUppercase :: String -> String
       removeUppercase s = [c | c <- s, c `elem` ['a'..'z']]
       ```

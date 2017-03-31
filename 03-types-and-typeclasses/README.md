@@ -8,6 +8,10 @@
             * `::` is read "has type of"
 * **Function Type Declarations**
     * Unless they're very short, functions should typically be declared with *type declarations*
-    * ```removeUppercase :: String -> String
-         removeUppercase s = [c | c <- s, c `elem` ['a'..'z']]```
 
+    ```
+    removeUppercase :: String -> String
+    removeUppercase s = [c | c <- s, c `elem` ['a'..'z']]
+    ```
+
+    * Test

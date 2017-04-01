@@ -25,8 +25,8 @@ bilerp ll lr ul ur wx wy = lerp lower upper wy
 -- 2D value noise
 noise2 :: Double -> Double -> Double
 noise2 x y = bilerp ll lr ul ur wx wy
-             where
-                 (ix, iy) = (floor x :: Int32, floor y :: Int32)
-                 (wx, wy) = (x - fromIntegral (floor x), y - fromIntegral (floor y))
-                 (ll, lr) = (inf2 (ix+0) (iy+0), inf2 (ix+1) (iy+0))
-                 (ul, ur) = (inf2 (ix+0) (iy+1), inf2 (ix+1) (iy+1))
+           where
+               (ix, iy) = (floor x :: Int32, floor y :: Int32)
+               (wx, wy) = (x - fromIntegral (floor x), y - fromIntegral (floor y))
+               (ll, lr) = (inf2 (ix+0) (iy+0), inf2 (ix+1) (iy+0))
+               (ul, ur) = (inf2 (ix+0) (iy+1), inf2 (ix+1) (iy+1))

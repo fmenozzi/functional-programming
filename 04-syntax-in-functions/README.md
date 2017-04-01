@@ -43,3 +43,22 @@
       -- Remove the third element in a list of 3-tuples
       firstTwo = [(a,b) | (a,b,_) <- [(1,2,3), (4,5,6), (7,8,9)]]
       ```
+
+    * Pattern matching on lists is very common
+        * Can match on empty list `[]` or any pattern that involves `:` and the empty list
+            * Since e.g. `[1,2,3]` is syntactic sugar for `1:2:3:[]`, you can also use `[1,2,3]`
+        * A typical pattern used is matching on `x:xs`, which binds `x` to the head of the list and `xs` to the rest
+            * Patterns that use `:` only match against non-empty lists, so a separate match for `[]` must be used
+            * If the list has only one element, that element is bound to `x` and `xs` is empty
+        * This can extend to multiple "heads"
+            * e.g. `x:y:z:zs` matches to lists of length 3 or more
+        * This can be used to create an alternative `head` function:
+
+          ```haskell
+          head' :: [a] -> a
+          head' [] = error "Empty list"
+          head' (x:_) = x
+          ```
+
+            * **NOTE**: If we bind to several variables (even if some are `_`), we **MUST** use parens
+            * **`error`** takes a `String` and produces a runtime error

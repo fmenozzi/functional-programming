@@ -16,17 +16,17 @@ lerp x y w = if w < 0 || w > 1 then
              else
                  x*(1.0-w) + y*w
 
--- Cubic S-curve
-cscurve :: Double -> Double -> Double -> Double
-cscurve x y w = lerp x y cw
-              where
-                  cw = ((-2)*w^3) + (3*w^2)
+-- Cubic S-curve interpolation
+clerp :: Double -> Double -> Double -> Double
+clerp x y w = lerp x y cw
+            where
+                cw = ((-2)*w^3) + (3*w^2)
 
--- Quintic S-curve
-qscurve :: Double -> Double -> Double -> Double
-qscurve x y w = lerp x y qw
-              where
-                  qw = 6*w^5 - 15*w^4 + 10*w^3
+-- Quintic S-curve interpolation
+qlerp :: Double -> Double -> Double -> Double
+qlerp x y w = lerp x y qw
+            where
+                qw = 6*w^5 - 15*w^4 + 10*w^3
 
 -- Bilinear interpolation
 bilerp :: Double -> Double -> Double -> Double -> Double -> Double -> Double

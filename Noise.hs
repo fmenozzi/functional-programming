@@ -1,3 +1,7 @@
+module Noise (
+    value
+) where
+
 import Data.Bits
 import Data.Int
 

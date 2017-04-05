@@ -86,3 +86,58 @@
         * i.e., functions that don't have a name because they're only used once
     * Denoted with the `\` keyword (kinda looks like the Greek letter lambda)
     * After the `\` come arguments (separated by spaces), then `->` followed by the function body
+        * Lambdas should be wrapped in parens
+    * For example, suppose you want to find all odd integers in a list:
+
+      ```haskell
+      filter (\x -> odd x) [1..100]
+      ```
+
+        * Note that you could simply pass `odd` here; this is just a demonstration of syntax
+
+* **Folds**
+    * Recursive functions in Haskell that operate on lists often follow a similar pattern:
+        1. Base case on empty list
+        2. Recursive case on `(x:xs)`, where we do something with `x` and then recurse somehow on `xs`
+    * This idiom is so common that Haskell includes several useful functions for encapsulating that behavior called *folds*
+        * A fold takes a binary function, a starting value (often called the *accumulator*), and a list
+            * The binary function itself takes two parameters: the accumulator and (depending on fold direction) an element from the list
+            * It then produces a new accumulator based on the function body
+    * Folds are similar to `map`, except that they reduce the list to a single value
+    * For example, **`foldl`** folds from the *left* side of the list. We can use it to implement the standard library `sum` function:
+
+      ```haskell
+      sum' :: (Num a) => [a] -> a
+      sum' xs = foldl (\acc x -> acc + x) 0 xs
+      ```
+
+      Or, because of currying, we can return a function directly as follows:
+
+      ```haskell
+      sum' :: (Num a) => [a] -> a
+      sum' = foldl (+) 0
+      ```
+
+    * We can fold starting from the right instead with **`foldr`**
+    * We can also use the **`foldl1`** and **`foldr1`** functions to call `foldl` or `foldr` with the first or last element, respectively, intsead of having to explicitly provide the initial accumulator
+
+* **Function Application with $**
+    * Similar to standard function application with spaces, except that it has the lowest precedence, rather than the highest
+    * Used mostly as a convenience function to avoid writing so many parens
+    * For example, `sqrt (3 + 4 + 9)` can be re-written as `sqrt $ 3 + 4 + 9`
+
+* **Function Composition**
+    * Similar to function composition in math
+        * i.e. `(f o g)(x) = f(g(x))`
+    * Useful for making functions to pass to other functions on the fly
+    * For example, if we want to negate the sum of the tails of a list of lists, we could do it with lambdas:
+
+      ```haskell
+      map (\xs -> negate $ sum $ tail xs) [[1..5],[3..6],[1..7]]
+      ```
+
+      Or, we could use function composition:
+
+      ```haskell
+      map (negate . sum . tail) [[1..5],[3..6],[1..7]]
+      ```

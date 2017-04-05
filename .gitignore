@@ -1,1 +1,6 @@
 test.hs
+test.hi
+test.o
+test
+
+*.pgm
